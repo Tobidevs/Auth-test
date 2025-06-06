@@ -27,15 +27,24 @@ export const signup = async (req, res) => {
 
         generateTokenAndSetCookie(res, user._id)
 
+        res.status(201).json({
+            success: true,
+            message: "User created Successfully",
+            user: {
+                ...user._doc,
+                password: undefined
+            }
+        })
+
     } catch (error) {
         res.status(400).json({message: error.message})
     }
 }
 
 export const login = async (req, res) => {
-    res.send("sign up route")
+    res.send("login up route")
 }
 
 export const logout = async (req, res) => {
-    res.send("sign up route")
+    res.send("logout up route")
 }
